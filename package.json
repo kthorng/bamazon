@@ -1,0 +1,32 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "bamazon the storefront",
+  "main": "bamazonCustomer.js",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cli-table": "^0.3.1",
+    "console.table": "^0.10.0",
+    "dotenv": "^6.1.0",
+    "inquire": "^0.4.8",
+    "inquirer": "^6.2.0",
+    "mysql": "^2.16.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "n/a"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kthorng/bamazon.git"
+  },
+  "keywords": [
+    "bamazon"
+  ],
+  "author": "Keo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kthorng/bamazon/issues"
+  },
+  "homepage": "https://github.com/kthorng/bamazon#readme"
+}
