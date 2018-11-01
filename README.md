@@ -42,7 +42,23 @@ The customer interface:
 3) Asks how many items the customer would like to purchase
 4) Confirms order & updates product inventory in database
 ```
-![customer demo][1_bamazonCustomer]
+![customer demo: customer demo][1_bamazonCustomer]
+
+![customer demo: customer demo start][2_bamazonCustomer]
+
+![customer demo: purchase][3_bamazonCustomer]
+
+![customer demo: purchase confirm][4_bamazonCustomer]
+
+![customer demo: purchased][5_bamazonCustomer]
+
+![customer demo: customer demo end][6_bamazonCustomer]
+
+![customer demo: no items][7_bamazonCustomer]
+
+![customer demo: mysql before][8_bamazonCustomer]
+
+![customer demo: mysql after][9_bamazonCustomer]
 
 [Scroll to top](#top)
 
@@ -74,3 +90,28 @@ ___
 
 [1_bamazonCustomer]: 
 https://github.com/kthorng/bamazon/blob/master/assets/images/Nov%201%2C%202018%201_04%20PM.gif "customer demo"
+
+[2_bamazonCustomer]: 
+https://github.com/kthorng/bamazon/blob/master/assets/images/1-welcome.png "customer demo start"
+
+[3_bamazonCustomer]: 
+https://github.com/kthorng/bamazon/blob/master/assets/images/2-purchase.png "purchase"
+
+[4_bamazonCustomer]: 
+https://github.com/kthorng/bamazon/blob/master/assets/images/2-purchase-confirm.png "purchase confirm"
+
+[5_bamazonCustomer]: 
+https://github.com/kthorng/bamazon/blob/master/assets/images/3-purchased.png "purchased"
+
+[6_bamazonCustomer]: 
+https://github.com/kthorng/bamazon/blob/master/assets/images/4-end.png "customer demo end"
+
+[7_bamazonCustomer]: 
+https://github.com/kthorng/bamazon/blob/master/assets/images/5-no-items.png "no items"
+
+[8_bamazonCustomer]: 
+https://github.com/kthorng/bamazon/blob/master/assets/images/6-before-purchase.png "mysql before"
+
+[9_bamazonCustomer]: 
+https://github.com/kthorng/bamazon/blob/master/assets/images/7-after-purchase.png "mysql after"
+
