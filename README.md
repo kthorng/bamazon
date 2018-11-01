@@ -72,3 +72,5 @@ To contribute to this application:
 
 ___
 
+[1_bamazonCustomer]: 
+https://github.com/kthorng/bamazon/blob/master/assets/images/Nov%201%2C%202018%201_04%20PM.gif "customer demo"
