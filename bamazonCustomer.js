@@ -1,5 +1,4 @@
-// SETUP
-// =====================================================================================
+// Set-Up =============================================================================
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 var chalk = require('chalk');
@@ -9,7 +8,7 @@ var Table = require('cli-table');
 var connection = mysql.createConnection({
     host: '',
     user: 'root',
-    password: '',
+    password: 'ankorwat',
     database: 'bamazonDB'
 });
 
@@ -20,13 +19,10 @@ connection.connect((err) => {
     // display all items from database once mysql connection has been established
     displayItems();
 });
-
-// GLOBAL VARIABLES
-// =====================================================================================
+// Global Variable =====================================================================
 var chosenItem = {};
 
-// FUNCTIONS
-// =====================================================================================
+// Functions ===========================================================================
 // function to reset the chosenItem array so that previous purchases are not inside
 var resetCart = function() {
     chosenItem = {};
@@ -42,7 +38,7 @@ var displayItems = function() {
         for (var i = 0; i < res.length; i++) {
             listTable.push([res[i].item_id, res[i].product_name, `$${res[i].price}`]);
         }       
-        console.log(`\n\n${listTable.toString()}\n\n`);
+        console.log(chalk.cyan(`\n\n${listTable.toString()}\n\n`));
         // ask user to enter ID of item they wish to purchase
         askForID();
     });
@@ -52,13 +48,13 @@ var askForID = function() {
     inquirer.prompt({
         name: 'itemID',
         type: 'input',
-        message: 'Enter the Product ID that you would like to purchase: ',
+        message: 'Enter the Item ID that you would like to purchase: ',
         // validate input is number from 1-10
         validate: (value) => {
             if (!isNaN(value) && (value > 0 && value <= 10)) {
                 return true;
             } else {
-                console.log(chalk.red(' => Please enter a number from 1-10'));
+                console.log(chalk.red(' = Invalid selection, please choose a valid Item ID'));
                 return false;
             }
         }
@@ -75,7 +71,7 @@ var confirmItem = function(product, object) {
     inquirer.prompt({
         name: 'confirmItem',
         type: 'confirm',
-        message: `You chose` + chalk.blue.bold(` '${product}'. `) + `Is this correct?`
+        message: `You chose` + chalk.magenta.bold(` '${product}'. `) + `Is this correct?`
     }).then((answer) => {
         if (answer.confirmItem) {
             chosenItem = {
@@ -84,14 +80,14 @@ var confirmItem = function(product, object) {
                 price: object[0].price,
                 stock_quantity: object[0].stock_quantity,
             };
-            // ask how many they'd like to purchase
+            // initate function for amount of units to purchase
             askHowMany(chosenItem.item_id);
         } else {
             askForID();
         }
     });
 };
-// function to ask user how many of the products they'd like to purchase
+// function to ask user how many units of the products to purchase
 var askHowMany = function(chosenID) {
     inquirer.prompt({
         name: 'howMany',
@@ -101,7 +97,7 @@ var askHowMany = function(chosenID) {
             if (!isNaN(value) && value > 0) {
                 return true;
             } else {
-                console.log(chalk.red(' => Oops, please enter a number greater than 0'));
+                console.log(chalk.red(' = How many would you like to purchase?'));
                 return false;
             }
         }
@@ -109,7 +105,7 @@ var askHowMany = function(chosenID) {
         connection.query('SELECT stock_quantity FROM products WHERE ?', { item_id: chosenItem.item_id }, (err, res) => {
             // if there are not enough products in stock
             if (res[0].stock_quantity < answer.howMany) {
-                console.log(chalk.blue.bold('\n\tSorry, insufficient quantity in stock!\n'));
+                console.log(chalk.green.bold('\n\tSorry, insufficient quantity in stock!\n'));
                 // confirm if user would still like to buy this product
                 inquirer.prompt({
                     name: 'proceed',
@@ -119,14 +115,14 @@ var askHowMany = function(chosenID) {
                     if (answer.proceed) {
                         askHowMany(chosenItem.item_id);
                     } else {
-                        console.log(chalk.blue.bold('\n\tPlease visit again, we may have more products stocked.\n'));
+                        console.log(chalk.magenta.bold('\n\tPlease visit again, we may have more products stocked.\n'));
                         connection.end();
                     }
                 });
             // if there are enough products in stock for purchase to go through
             } else {
                 chosenItem.howMany = answer.howMany;
-                console.log(chalk.blue.bold('\n\tOrder processing...'));
+                console.log(chalk.green.bold('\n\tOrder processing...'));
                 // console.log(chosenItem);
 
                 // update database to reflect new stock quantity after sale
@@ -138,7 +134,7 @@ var askHowMany = function(chosenID) {
                         item_id: chosenItem.item_id
                     }
                 ], (err, res) => {
-                    console.log(chalk.blue.bold(`\n\tOrder confirmed.  The damage was $${(chosenItem.price * chosenItem.howMany).toFixed(2)}.\n`));
+                    console.log(chalk.green.bold(`\n\tOrder confirmed.  The damage was $${(chosenItem.price * chosenItem.howMany).toFixed(2)}.\n`));
                     // ask if user would like to make another purchase
                     promptNewPurchase();
                 });
@@ -158,7 +154,7 @@ var promptNewPurchase = function() {
             resetCart();
             askForID();
         } else {
-            console.log(chalk.blue.bold('\n\tThank you for the business, please visit again soon!\n'));
+            console.log(chalk.magenta.bold('\n\tThank you for the business, please visit again soon!\n'));
             connection.end();
         }
     });
