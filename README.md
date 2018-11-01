@@ -42,23 +42,82 @@ The customer interface:
 3) Asks how many items the customer would like to purchase
 4) Confirms order & updates product inventory in database
 ```
-![customer demo: customer demo][1_bamazonCustomer]
+![customer demo: demo][1_bamazonCustomer]
 
+___
+
+
+```
+1) Welcome Screen Demo Start
+Displays a table of all products
+```
 ![customer demo: customer demo start][2_bamazonCustomer]
 
+___
+
+
+```
+3) Purchase
+Purchasing an item
+```
 ![customer demo: purchase][3_bamazonCustomer]
 
+___
+
+
+```
+4) Purchase Confirm
+Confirms with user if this is th item to purchase
+```
 ![customer demo: purchase confirm][4_bamazonCustomer]
 
+___
+
+
+```
+5) Purchased
+Confirmation with user that item(s) have been purchased
+```
 ![customer demo: purchased][5_bamazonCustomer]
 
+___
+
+
+```
+6) Demo End
+Will ask user if they would like to purchase another item, if user opts to not purchase another item.  App displays end message and ends.
+```
 ![customer demo: customer demo end][6_bamazonCustomer]
 
+___
+
+
+```
+7) Not Enough Stock
+If there is not enough items in stock, App will ask if you would like to purchase items still at a decreased amount.
+```
 ![customer demo: no items][7_bamazonCustomer]
 
+___
+
+
+```
+8) MySQL WorkBench: Before
+Red Dead Redemption 2 stock_quantity at 90
+```
 ![customer demo: mysql before][8_bamazonCustomer]
 
+___
+
+
+```
+8) MySQL WorkBench: After
+Red Dead Redemption 2 stock_quantity at 80
+```
 ![customer demo: mysql after][9_bamazonCustomer]
+
+___
+
 
 [Scroll to top](#top)
 
@@ -89,7 +148,7 @@ To contribute to this application:
 ___
 
 [1_bamazonCustomer]: 
-https://github.com/kthorng/bamazon/blob/master/assets/images/Nov%201%2C%202018%201_04%20PM.gif "customer demo"
+https://github.com/kthorng/bamazon/blob/master/assets/images/Nov%201%2C%202018%201_04%20PM.gif "demo"
 
 [2_bamazonCustomer]: 
 https://github.com/kthorng/bamazon/blob/master/assets/images/1-welcome.png "customer demo start"
